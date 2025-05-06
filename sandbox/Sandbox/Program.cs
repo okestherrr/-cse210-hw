@@ -39,6 +39,7 @@ class Program
         Console.WriteLine($"{myCircle2.GetRadius()}");
 
         Console.WriteLine($"{myCircle.GetArea()}");
+        Console.WriteLine($"{myCircle2.GetArea()}");
 
     }
 }

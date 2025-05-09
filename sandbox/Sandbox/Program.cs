@@ -1,30 +1,6 @@
 using System;
 using System.Diagnostics.Tracing;
 
-class Circle
-{
-    private double _radius;
-
-    public void SetRadius(double radius)
-    {
-       if(radius < 0)
-       {
-        Console.WriteLine("Error");
-        return;
-       }
-        _radius = radius;
-    }
-    public double GetRadius()
-    {
-        return _radius;
-    } 
-
-    public double GetArea()
-    {
-        return Math.PI * _radius * _radius;
-    }
-    
-}
 class Program 
 {
     static void Main(string[] args)
@@ -41,7 +17,11 @@ class Program
         Console.WriteLine($"{myCircle.GetArea()}");
         Console.WriteLine($"{myCircle2.GetArea()}");
 
+        Cylinder myCylinder = new Cylinder();
+        myCylinder.SetCircle(myCircle);
+        myCylinder.SetHeight(10);
+        Console.WriteLine($"{myCylinder.GetVolume()}");
+
+
     }
 }
-
-

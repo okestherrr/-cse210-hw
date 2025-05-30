@@ -1,7 +1,6 @@
 public class Word
 {
     private string _word;
-    // private string _text;
     private bool _WordisHidden;
 
     public Word(string word)
@@ -10,23 +9,23 @@ public class Word
         _WordisHidden = false;
     }
 
-    // public Word(string text, bool WordisHidden)
-    // {
-    //     // _text = text;
-    //     _WordisHidden = WordisHidden;
-    // }
-
     public string GetWord()
     {
         if (_WordisHidden)
         {
             string hiddenword = GetBlankText();
             return hiddenword;
-            //return GetBlankText();
         }
 
         return _word;
     }
+
+    public void HideWord()
+    {
+        _WordisHidden = true;
+
+    }
+
 
     public bool WordIsHidden()
     {
@@ -38,7 +37,7 @@ public class Word
         string hiddenword = "";
         foreach (var letter in _word)
         {
-            hiddenword += "-";
+            hiddenword += "_";
         }
         return hiddenword;
     }

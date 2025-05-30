@@ -8,12 +8,14 @@ class Program
         Reference reference = new Reference("john", 3, 16);
         string userInput = "";
         Console.WriteLine(reference.GetDisplayText());
+        Scripture scripture = new Scripture(reference, "testing scripture");
+        scripture.DisplayHiddenText();
         // while (userInput != "quit") (Console.WriteLine("Press Enter to keep going or Q to quit."){
         //     userInput = Console.ReadLine();
 
         //     Scripture scripture = new Scripture()
         // })// this is a conditional
-    // study do and do whiles
+        // study do and do whiles
         //this will loop with enter or end with q
     }
 

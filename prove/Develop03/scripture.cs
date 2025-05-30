@@ -11,19 +11,17 @@ public class Scripture
     {
         _reference = reference;
         _scripture = scripture;
+        _words = new List<Word>();
 
-        // string[] scripture = _words[reference].Split("/");
-        // string[] verseText = scripture[1].Split(" ");
-
-        string[] words = _scripture.Split(" ");
+        string[] words = _scripture.Split(' ');
 
         foreach (string word in words)
         {
-            _words.Add(new Word(word));
+            Word newWord = new Word(word);
+            _words.Add(newWord);
         }
 
     }
-
     public void HideRandomWords(int count, Random random)
     {
         List<int> unhiddenIndexedWords = new List<int>();
@@ -37,14 +35,16 @@ public class Scripture
         // has 3 statements here
     }
 
-//     public bool AllHiddenWordsCheck()
-//     {
-        
-//     }
+    //    public bool AllHiddenWordsCheck()
+    //     {
 
-//     public string DisplayHIddenText()
-//     {
-//         foreach GetBlankText 
-//     }
-//     public reference GetReference()// how do I make it return a reference 
+    //     }
+
+    public void DisplayHiddenText()
+    {
+        foreach (Word word in _words)
+        {
+            Console.Write(word.GetWord());
+        }
+    }
 }

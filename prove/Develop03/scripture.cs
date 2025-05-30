@@ -44,7 +44,7 @@ public class Scripture
     {
         foreach (Word word in _words)
         {
-            Console.Write(word.GetWord());
+            Console.Write($"{word.GetWord()} ");
         }
     }
 }

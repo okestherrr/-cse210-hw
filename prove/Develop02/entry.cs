@@ -8,7 +8,9 @@ public class Entry
 
     public Entry()
     {
-
+        _date = "";
+        _entry = "";
+        _prompt = ""; 
     }
     public Entry(string date, string entry, string prompt)
     {

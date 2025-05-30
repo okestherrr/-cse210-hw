@@ -7,7 +7,7 @@ public class Journal
     public void AddEntry(Entry e)
     {
         JournalEntries.Add(e);
-        Console.WriteLine("Entry added successfully.");
+        // Console.WriteLine("Entry added successfully.");
     }
     public void DisplayJournal()
     {
@@ -50,7 +50,8 @@ public class Journal
                 string prompt = lines[1];
                 string entry = lines[2];
                 Entry newEntry = new Entry(date, entry, prompt);
-                JournalEntries.Add(newEntry);
+                // JournalEntries.Add(newEntry);
+                AddEntry(newEntry);
             }
         }
     }

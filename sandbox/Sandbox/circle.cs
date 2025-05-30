@@ -1,14 +1,25 @@
-class Circle
+class Circle //class
 {
-    private double _radius;
+    private double _radius; //
 
-    public void SetRadius(double radius)
+    public Circle()
     {
-       if(radius < 0)
-       {
-        Console.WriteLine("Error");
-        return;
-       }
+        _radius = 0.0;
+    }
+
+    public Circle(double radius)
+    {
+        // _radius = radius;
+        SetRadius(radius);
+    }
+
+    public void SetRadius(double radius) // A public method lets u use it throughout different classes, private is used only in the same class its in. 
+    {
+        if (radius < 0)
+        {
+            Console.WriteLine("Error");
+            return;
+        }
         _radius = radius;
     }
     public double GetRadius()

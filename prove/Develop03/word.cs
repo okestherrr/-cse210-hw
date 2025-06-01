@@ -9,24 +9,18 @@ public class Word
         _WordisHidden = false;
     }
 
-    public string GetWord()
+    public string GetDisplayText() // previously GetWord
     {
         if (_WordisHidden)
         {
-            string hiddenword = GetBlankText();
-            return hiddenword;
+            return GetBlankText();
         }
-
         return _word;
     }
-
     public void HideWord()
     {
         _WordisHidden = true;
-
     }
-
-
     public bool WordIsHidden()
     {
         return _WordisHidden;
@@ -34,11 +28,6 @@ public class Word
 
     private string GetBlankText()
     {
-        string hiddenword = "";
-        foreach (var letter in _word)
-        {
-            hiddenword += "_";
-        }
-        return hiddenword;
+        return new string('_', _word.Length);
     }
 }

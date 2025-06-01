@@ -23,11 +23,8 @@ public class Reference
     public string GetDisplayText()
     {
         if (_endverse == -1)
-        {
-            return ($"{_book} {_chapter}:{_beginverse}");
-        }
-        return ($"{_book} {_chapter}:{_beginverse}{_endverse}");
-
+            return $"{_book} {_chapter}:{_beginverse}";
+        else
+            return $"{_book} {_chapter}:{_beginverse}-{_endverse}";
     }
-
 }

@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // List of scriptures
+        // Create a list of scriptures with their references
         List<Scripture> scriptures = new List<Scripture>()
         {
             new Scripture(new Reference("John", 3, 16),
@@ -21,14 +21,12 @@ class Program
                 "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast.")
         };
 
-        // Pick one randomly
+        // Pick a random scripture
         Random random = new Random();
         int index = random.Next(scriptures.Count);
         Scripture scripture = scriptures[index];
 
         string userInput = "";
-        bool quitEarly = false;
-
         while (userInput != "q" && !scripture.AllHiddenWordsCheck())
         {
             Console.Clear();
@@ -36,24 +34,11 @@ class Program
             Console.WriteLine(scripture.DisplayHiddenText());
             userInput = Console.ReadLine();
 
-            if (userInput == "q")
+            if (userInput != "q")
             {
-                quitEarly = true;
-            }
-            else
-            {
-                scripture.HideRandomWords(3);
+                scripture.HideRandomWords(3); // hide 3 words each time
             }
         }
-
         Console.Clear();
-        if (quitEarly)
-        {
-            Console.WriteLine("Better luck next time!");
-        }
-        else
-        {
-            Console.WriteLine("Congrats on finishing studying!");
-        }
     }
 }

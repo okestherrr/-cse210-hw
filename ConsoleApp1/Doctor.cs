@@ -7,6 +7,6 @@ class Doctor : Person
     }
     public string GetDoctorsInfo()
     {
-        return $" {_tools}, {GetPersonInfo()}";
+        return $"{_tools}, {GetPersonInfo()}";
     }
 }

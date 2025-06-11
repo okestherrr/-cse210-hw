@@ -14,13 +14,13 @@ class Person
     {
         return $"{_firstName}, {_lastName}, {_age}";
     }
-    public string GetBaseInfo()
-    {
-        return $"{_firstName}, {_lastName}, {_age}";
-    }
+    // public string GetBaseInfo()
+    // {
+    //     return $"{_firstName}, {_lastName}, {_age}";
+    // }
 
-    public void SetFirstName(string firstName)
-    {
-        _firstName = firstName;
-    }
+    // public void SetFirstName(string firstName)
+    // {
+    //     _firstName = firstName;
+    // }
 }

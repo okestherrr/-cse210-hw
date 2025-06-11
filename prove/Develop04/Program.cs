@@ -1,9 +1,21 @@
 using System;
 
-class Program
+//will have the menue and program with main void
+public class Program
+
 {
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        BaseActivity BaseActivity = new BaseActivity();
+        ListingActivity ListingActivity = new ListingActivity();// find what to put in parameters
+        ReflectionActivity ReflectionActivity = new ReflectionActivity();
+        BreathingActivity BreathingActivity = new BreathingActivity();
+        string menu = "";
+
     }
+    private int DisplayMenu()
+    {
+        
+    } 
 }

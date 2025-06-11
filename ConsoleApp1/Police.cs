@@ -1,4 +1,4 @@
-class Police : Person // alex( is this connecting each case), is there a time when you wouldnt do this or there would be mulitple that you could clash together
+class Police : Person 
 {
     private string _weapons;
 

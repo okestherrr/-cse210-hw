@@ -17,7 +17,7 @@ public class Program
                 case "1":
                     // generate random prompt,
                     // ask user for their response
-                    // get current date
+                // get current date
                     // Entry journalEntry = new Entry(date, prompt, response)
                     Entry journalEntry = new Entry();
                     journalEntry.RequestEntry();

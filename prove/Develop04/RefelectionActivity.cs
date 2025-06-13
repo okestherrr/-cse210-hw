@@ -15,15 +15,12 @@ class ReflectionActivity : BaseActivity
     // }
     public void RunActivity()
     {
-
+        
     }
-    public void SetPromptsAndQuestions()
+    public void reflextion()
     {
 
     }
-    public void ResetPromptsUsage()
-    {
-
-    }
+  
 
 }

@@ -34,7 +34,7 @@ public class BaseActivity
     }
     public void StartTime()
     {
-
+    
     }
     public bool HasTimerExpired()
     {
@@ -47,7 +47,7 @@ public class BaseActivity
     public string GetPromptString(List<FlaggedString> prompts)
     {
         //List<string> prompts = new List<string>(){""}
-        
+
     }
 
 

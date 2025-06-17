@@ -1,4 +1,4 @@
-class Person
+abstract class Person
 {
     private string _firstName;
     private string _lastName;
@@ -10,17 +10,10 @@ class Person
         _age = age;
 
     }
-    public string GetPersonInfo()
+    public virtual string GetPersonInfo()//base classs must use default stuff
     {
-        return $"{_firstName}, {_lastName}, {_age}";
+        return $"{_firstName}, {_lastName}, Age: {_age}";
     }
-    // public string GetBaseInfo()
-    // {
-    //     return $"{_firstName}, {_lastName}, {_age}";
-    // }
-
-    // public void SetFirstName(string firstName)
-    // {
-    //     _firstName = firstName;
-    // }
+    public abstract double GetSalary();// base class CAN NOT provide default and the child class must make the changes
+   
 }

@@ -28,7 +28,12 @@ class Police : Person
             pay += (_hoursWorked - 40) * _hourlyWage * 2;
         }
         return pay;
-       
+
+    }
+
+    public void SetSchooling(string newSchooling)
+    {
+       //add new varialbe about schooling
     }
 
 }

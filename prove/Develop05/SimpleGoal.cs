@@ -9,20 +9,20 @@ public class SimpleGoal
         _isDone = isDone;
     }
 
-    public void override Recordevent()
+    public override void RecoredEvent()
     {
 
     }
 
-    public bool override IsDone()//returns if it is Done to base
+    public override bool IsDone()//returns if it is Done to base
     {
 
     }
-    public string DisplayX()// puts X if it is complete
+    public override string DisplayX()// puts X if it is complete
     {
 
     }
-    public string SaveGoalInfo()// Adds _isDone to save it
+    public override string SaveGoalInfo()// Adds _isDone to save it
     {
 
     }

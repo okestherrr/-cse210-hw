@@ -13,7 +13,7 @@ public class ChecklistGoal : Goal
         _maxGoal = maxGoal;
     }
 
-    public void RecordedEvent()//awards points and bonus if completed
+    public override void RecordedEvent()//awards points and bonus if completed
     {
 
     }
@@ -23,12 +23,12 @@ public class ChecklistGoal : Goal
 
     }
 
-    public string FormatedDisplay()//shows "[ ] Name - Completed x/y"
+    public override string FormatedDisplay()//shows "[ ] Name - Completed x/y"
     {
 
     }
 
-    public string override CountBonus()// includes count and bonuses in the formatedDisplay
+    public override string CountBonus()// includes count and bonuses in the formatedDisplay
     {
 
     }

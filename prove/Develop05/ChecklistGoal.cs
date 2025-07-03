@@ -13,14 +13,14 @@ public class ChecklistGoal : BaseGoal
         _maxGoal = max;
     }
 
-    public override void RecordEvent()//awards points and bonus if completed
+    public override int RecordEvent()//awards points and bonus if completed
     {
-
+        return 1;//fix this 
     }
 
     public bool IsDone()// return true if goal count is more than or is the target amount
     {
-        return _isDone;  
+        return _isDone;
     }
 
     // public override string FormatedDisplay()//shows "[ ] Name - Completed x/y"
@@ -29,6 +29,10 @@ public class ChecklistGoal : BaseGoal
     // }
 
     public override string CountBonus()// includes count and bonuses in the formatedDisplay
+    {
+
+    }
+    public override void RunGoal()
     {
 
     }

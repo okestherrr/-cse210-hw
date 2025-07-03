@@ -16,7 +16,7 @@ public class Program
             switch (menuSelection)
             {
                 case 1:// create new goal
-                    Goal NewGoal = new Goal();
+                    BaseGoal NewGoal = new BaseGoal();
                     // make goal and put goal into list of goals
                     break;
                 case 2:// list goals

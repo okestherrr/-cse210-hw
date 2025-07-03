@@ -7,13 +7,12 @@ public abstract class BaseGoal
     private string _description;
     private int _points;
     private string _filename;
-    private int _totalScore;
+
     private bool _status;
     private string _goalType;
-    private int _totalScore = 0;
-    List<BaseGoal> _goals = new List<BaseGoal>();//am i doing this right
-   
-    
+
+
+
     public BaseGoal(string name, string description, int points, bool status, string goalType)
     {
         _name = name;
@@ -24,8 +23,8 @@ public abstract class BaseGoal
 
     }
 
-    public abstract int RecordGoal();//handles completed goal- is abstract so doesnt need any parameters
-    
+    public abstract int RecordEvent();//handles completed goal- is abstract so doesnt need any parameters
+
 
     public abstract bool IsDone();// checks if goal is done or not
                                   // leave empty because every goals "is done" will be different( eternal wont ever be done)
@@ -47,12 +46,12 @@ public abstract class BaseGoal
 
     public string GetName()
     {
-    return _name;
+        return _name;
     }
     public void Setname(string name)
     {
         _name = name;// what is wrong with this
-     // update it was a void
+                     // update it was a void
     }
 
     public string GetDescription()
@@ -77,50 +76,22 @@ public abstract class BaseGoal
         _points = points;
     }
 
-   
+
     public virtual string GetGoalType()
     {
-    return _goalType;
+        return _goalType;
     }
-    public override string ToString()// help with this cuz i do be struggling lol
+    public override string ToString()
     {
-        Console.WriteLine($" {MarkDone} {_description}");
+        return $"{MarkDone} {_description}";
     }
 
-    public abstract string RunGoal();
+    public abstract void RunGoal();
 
     public void ListGoal()
     {
-        Console.WriteLine("The Goals are: ");
-        int index = 1;
-        foreach (BaseGoal goal in _goals)
-        {
-            Console.WriteLine($"{index}. {goal.ToString()}");
-            index++;
-        }
-    }
-    public void AddGoals(BaseGoal goal)
-    {
-        _goals.Add(goal);
-    }
-    public void LoadGoals()
-    {
 
     }
-    public void SaveGoals()
-    {
-
-    }
-    public void DisplayGoals()
-    {
-
-    }
-    public void DisplayScore()
-    {
-        Console.Writeline($" You have {_totalScore} points.");
-    }
-    private void GetFileName(string prompt)
-    {
-
-    }
+    
+    
 }

@@ -14,14 +14,13 @@ public class SimpleGoal : BaseGoal
         _isDone = isDone;
     }
 
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
-
+        return 1; //fix
     }
 
     public override void RunGoal()
-    {
-
+    {   
     }
     // public override string DisplayX()// puts X if it is complete
     // {

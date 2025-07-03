@@ -5,7 +5,7 @@ public class EternalGoal : BaseGoal
     
     public EternalGoal()
     {
-        _numberOfCompletion = 0;// is this correct
+        _numberOfCompletion = 0;// is this correct?
     }
     public EternalGoal(string name, string description, int points, bool status, int completions) : base()
     {
@@ -29,13 +29,9 @@ public class EternalGoal : BaseGoal
     {
         return "";
     }
-
-    
-
-    public override string SendToFile()///isnt this suppost to go to file?
+    public override string ListFile()///isnt this suppost to go to file?
     {
-        string OutputGoal = $"{ } #{_name}#{desciption}";
-        return OutputGoal;
+        
     }
 
 }

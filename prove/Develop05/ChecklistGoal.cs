@@ -6,7 +6,7 @@ public class ChecklistGoal : BaseGoal
     private int _numberOfCompletion;
     private int _maxGoal;
 
-    public ChecklistGoal(string name, string description, int poinds, bool status, int bonus, int completions, int max, int bonus) : base("")// fix
+    public ChecklistGoal(string name, string description, int poinds, bool status, int bonus, int completions, int max, int bonus) : base(string name, string description, int poinds, bool status, int bonus, int completions, int max, int bonus)// fix
     {
         _bonus = bonus;
         _numberOfCompletion = completions;
@@ -26,8 +26,4 @@ public class ChecklistGoal : BaseGoal
     {
 
     }
-
-
-
-
 }

@@ -1,6 +1,8 @@
 public class Allgoals
 {
-     private int _totalScore;
+    private int _totalScore;
+    private string _filename;
+
     private List<BaseGoal> _goals;
     public Allgoals()
     {
@@ -14,11 +16,14 @@ public class Allgoals
     }
     public void LoadGoals()
     {
-        
-    }
-    public void SaveGoals()
-    {
 
+    }
+    public void SendToFile()///isnt this suppost to go to file?
+    {
+        foreach (BaseGoal goal in _goals)
+        {
+            Console.WriteLine(goal.StringforGoalFile());// write this to a file
+        }
     }
     public void DisplayGoals()
     {
@@ -34,8 +39,8 @@ public class Allgoals
     {
         Console.WriteLine($" You have {_totalScore} points.");
     }
-    private void GetFileName(string prompt)
+    private void GetFileName(string)// fix this
     {
 
-    }
+    } 
 }

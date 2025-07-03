@@ -1,47 +1,41 @@
 using System;
-using System.Net;
 public class EternalGoal : BaseGoal
 {
     private int _numberOfCompletion;
-    public void EternalGoal(string name,string  description, int points, bool status,int completions) : base()
+    
+    public EternalGoal()
     {
-        
+        _numberOfCompletion = 0;// is this correct
+    }
+    public EternalGoal(string name, string description, int points, bool status, int completions) : base()
+    {
+        _numberOfCompletion = completions;
     }
 
+    public override void PopulateGoal()
+    {
+
+    }
     public override int RecordEvent()
     {
         return 1; // fix
-    }
-    public override void RunGoal()
-    {
-
-    }
-    public override string ToString()// help with this
-    {
-        return "";
     }
     public override string GetGoalType()
     {
         return "";
     }
-    public override string ListGoal()
+    
+    public override string ToString()// help with this
     {
-        //write to file
+        return "";
     }
 
-    // public override bool IsDone()
-    // {
-    //     return _isDone;
-    // }
+    
 
-    // public override string DisplayEmpty()
-    // {
-
-    // }
-
-    // public override string SaveGoalInfo()
-    // {
-
-    // }
+    public override string SendToFile()///isnt this suppost to go to file?
+    {
+        string OutputGoal = $"{ } #{_name}#{desciption}";
+        return OutputGoal;
+    }
 
 }

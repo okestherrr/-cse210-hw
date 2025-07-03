@@ -2,16 +2,8 @@ using System;
 
 public class SimpleGoal : BaseGoal
 {
-    // public SimpleGoal(name, description, points, status)
-    // {
-
-    // }
-
-    private bool _isDone;
-
-    public SimpleGoal(bool isDone) : base()
+    public SimpleGoal(string name, string description, int points, bool status, string goalType) : base(name,description, points,status,goalType)
     {
-        _isDone = isDone;
     }
 
     public override int RecordEvent()
@@ -19,20 +11,8 @@ public class SimpleGoal : BaseGoal
         return 1; //fix this 
     }
 
-    public override void RunGoal()
+    public override void PopulateGoal()
     {   
     }
-    // public override string DisplayX()// puts X if it is complete
-    // {
-
-    // }
-    // public override bool IsDone()//returns if it is Done to base
-    // {
-    //     return _isDone;
-    // }
-    
-    // public override string SaveGoalInfo()// Adds _isDone to save it
-    // {
-
-    // }
+   
 }

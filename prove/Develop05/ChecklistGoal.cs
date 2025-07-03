@@ -18,21 +18,11 @@ public class ChecklistGoal : BaseGoal
         return 1;//fix this 
     }
 
-    public bool IsDone()// return true if goal count is more than or is the target amount
-    {
-        return _isDone;
-    }
-
-    // public override string FormatedDisplay()//shows "[ ] Name - Completed x/y"
-    // {
-
-    // }
-
     public override string CountBonus()// includes count and bonuses in the formatedDisplay
     {
 
     }
-    public override void RunGoal()
+    public override void PopulateGoal()
     {
 
     }

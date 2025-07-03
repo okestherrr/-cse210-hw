@@ -1,32 +1,32 @@
 using System;
 
-public class ChecklistGoal : Goal
+public class ChecklistGoal : BaseGoal
 {
     private int _bonus;
     private int _numberOfCompletion;
     private int _maxGoal;
 
-    public ChecklistGoal(int bonus, int numberOfCompletion, int maxGoal) : base("")// fix
+    public ChecklistGoal(string name, string description, int poinds, bool status, int bonus, int completions, int max, int bonus) : base("")// fix
     {
         _bonus = bonus;
-        _numberOfCompletion = numberOfCompletion;
-        _maxGoal = maxGoal;
+        _numberOfCompletion = completions;
+        _maxGoal = max;
     }
 
-    public override void RecordedEvent()//awards points and bonus if completed
+    public override void RecordEvent()//awards points and bonus if completed
     {
 
     }
 
-    public bool IsDone()// return true if count is more than or is the target amount
+    public bool IsDone()// return true if goal count is more than or is the target amount
     {
-
+        return _isDone;  
     }
 
-    public override string FormatedDisplay()//shows "[ ] Name - Completed x/y"
-    {
+    // public override string FormatedDisplay()//shows "[ ] Name - Completed x/y"
+    // {
 
-    }
+    // }
 
     public override string CountBonus()// includes count and bonuses in the formatedDisplay
     {

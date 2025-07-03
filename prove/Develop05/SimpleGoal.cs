@@ -1,7 +1,12 @@
 using System;
-using System.Diagnostics.Contracts;
-public class SimpleGoal
+
+public class SimpleGoal : BaseGoal
 {
+    // public SimpleGoal(name, description, points, status)
+    // {
+
+    // }
+
     private bool _isDone;
 
     public SimpleGoal(bool isDone) : base()
@@ -9,22 +14,26 @@ public class SimpleGoal
         _isDone = isDone;
     }
 
-    public override void RecoredEvent()
+    public override void RecordEvent()
     {
 
     }
 
-    public override bool IsDone()//returns if it is Done to base
+    public override void RunGoal()
     {
 
     }
-    public override string DisplayX()// puts X if it is complete
-    {
+    // public override string DisplayX()// puts X if it is complete
+    // {
 
-    }
-    public override string SaveGoalInfo()// Adds _isDone to save it
-    {
+    // }
+    // public override bool IsDone()//returns if it is Done to base
+    // {
+    //     return _isDone;
+    // }
+    
+    // public override string SaveGoalInfo()// Adds _isDone to save it
+    // {
 
-    }
-
+    // }
 }

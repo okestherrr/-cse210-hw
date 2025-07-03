@@ -16,7 +16,7 @@ public class SimpleGoal : BaseGoal
 
     public override int RecordEvent()
     {
-        return 1; //fix
+        return 1; //fix this 
     }
 
     public override void RunGoal()

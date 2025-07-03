@@ -46,13 +46,13 @@ public abstract class BaseActivity
         Console.Write("|");
         Thread.Sleep(500);
         Console.Write("\b \b");
-        Console.WriteLine("-");
+        Console.Write("-");
         Thread.Sleep(500);
         Console.Write("\b \b");
-        Console.WriteLine("/");
+        Console.Write("/");
         Thread.Sleep(500);
         Console.Write("\b \b");
-        Console.WriteLine("|");
+        Console.Write("|");
         Thread.Sleep(500);
         Console.Write("\b \b");
 

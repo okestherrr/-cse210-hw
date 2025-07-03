@@ -19,12 +19,12 @@ public class Program
                     breathing.Run();
                     break;
                 case 2:
-                    ListingActivity listing = new ListingActivity();
-                    listing.Run();
+                ReflectionActivity reflection = new ReflectionActivity();
+                    reflection.Run();
                     break;
                 case 3:
-                    ReflectionActivity reflection = new ReflectionActivity();
-                    reflection.Run();
+                    ListingActivity listing = new ListingActivity();
+                    listing.Run();
                     break;
                 case 4:
                     Console.WriteLine("Bye!");

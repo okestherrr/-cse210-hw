@@ -2,16 +2,16 @@ using System;
 
 public class Program
 {
+    static Allgoals goal = new Allgoals();
     static void Main(string[] args)
     {
-        Allgoals Goals = new Allgoals();
         while (true)
         {
-            int menuSelection = DisplayMenu();
+            int choice = DisplayMenu();
 
             Console.Clear();
 
-            switch (menuSelection)
+            switch (choice)
             {
                 case 1:// create new goal
                     Console.WriteLine("what is the goal? ");
@@ -24,9 +24,7 @@ public class Program
                     string goalType = Console.ReadLine();
 
                     BaseGoal newGoal = new BaseGoal(name, desciption, points, goalType);
-                  
-                    
-                    //fix this
+
                     // make goal and put goal into list of goals
                     break;
                 case 2:// display and list goals
@@ -40,22 +38,19 @@ public class Program
                 case 4: //load goals
                     Console.WriteLine("What is the filename to load? ");
                     string Savefiles = Console.ReadLine();
-                  //help complete this
+                    //help complete this
 
                     break;
 
-                case 5://record event
+                case 5://recordevent 
 
                     break;
 
-                case 6://quit
+                case 6:
                     Console.WriteLine("Bye!");
                     break;
 
             }
-            // Console.WriteLine("\nPress Enter to return to the menu...");
-            // Console.ReadLine();
-            // Console.Clear();
         }
     }
     private static int DisplayMenu()
@@ -66,9 +61,9 @@ public class Program
             Console.WriteLine("1. Create New Goals");
             Console.WriteLine("2. List Goals");
             Console.WriteLine("3. Save Goals");
-            Console.WriteLine("3. Load Goals");
-            Console.WriteLine("3. Record Goals");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("4. Load Goals");
+            Console.WriteLine("5. Record Event");
+            Console.WriteLine("6. Quit");
             Console.Write("Please select a choice from the menu: ");
             string input = Console.ReadLine();
             if (int.TryParse(input, out int choice))

@@ -2,32 +2,46 @@ using System;
 
 public class ChecklistGoal : BaseGoal
 {
-    private int _bonus;
-    private int _numberOfCompletion;
-    private int _maxGoal;
+    private readonly int _bonus;
+    private readonly int _maxTimes;
+    private int _current;
+    
+    // private int _numberOfCompletion;
 
-    public ChecklistGoal(string name, string description, int points, bool status, int bonus, int completions, int max) : base(name, description, points, status, bonus, completions, max)// fix
+    public ChecklistGoal(string name, string description, int points, bool status, int bonus, int completions, int max) : base(name, description, points, "Checklist")
     {
         _bonus = bonus;
-        _numberOfCompletion = completions;
-        _maxGoal = max;
+        //_numberOfCompletion = completions;
+        _maxTimes = max;
+        _current = 0;
     }
-
-    // public override int RecordEvent()//awards points and bonus if completed
+    // public override string CountBonus()// includes count and bonuses in the formatedDisplay
     // {
-    //     return 1;//fix this 
     // }
-
-    public override string CountBonus()// includes count and bonuses in the formatedDisplay
-    {
-
-    }
     public override void PopulateGoal()
     {
-
     }
-     public override string StringforGoalFile()
+    public override string StringforGoalFile()
     {
-        return $"CLG#" + base.StringforGoalFile();
+        return $"CLG#{_status}#{_current}/{_maxTimes}#{_bonus}#{_name}#{_description}#{_points}";
     }
+    public override int RecordEvent()
+    {
+        _current++;
+        if (_current >= _maxTimes)
+        {
+            _status = true;
+            return _points + _bonus;
+        }
+        return _points;
+    }
+    public override int GetPoints()
+    {
+        return _points;
+    }
+    public override string ToString()
+    {
+        return $"{(_status ? "[X]" : "[ ]")} {_name} ({_description}) — {_current}/{_maxTimes}";
+    }
+
 }

@@ -2,21 +2,31 @@ using System;
 
 public class SimpleGoal : BaseGoal
 {
-    public SimpleGoal(string name, string description, int points, bool status, string goalType) : base(name, description, points, status, goalType)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points, "Simple")
     {
     }
-
-    // public override int RecordEvent()
-    // {
-    //     return 1; //fix this 
-    // }
 
     public override void PopulateGoal()
     {
     }
-     public override string StringforGoalFile()
+    public override string StringforGoalFile()
     {
-        return $"SG#" + base.StringforGoalFile();
+        return $"SG#{_status}#{_name}#{_description}#{_points}";
     }
+    public override int RecordEvent()
+    {
+        _status = true;
+        return _points;
+    }
+
+    public override int GetPoints()
+    {
+        return _points;
+    }
+    public override string ToString()
+    {
+        return $"{(_status ? "[X]" : "[ ]")} {_name} ({_description})";
+    }
+    
    
 }

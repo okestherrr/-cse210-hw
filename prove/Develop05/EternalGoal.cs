@@ -3,18 +3,13 @@ public class EternalGoal : BaseGoal
 {
     private int _numberOfCompletion;
 
-    public EternalGoal()
+        public EternalGoal(string name, string description, int point, int completions) : base(name, description, point, "Eternal")
     {
         _numberOfCompletion = 0;// is this correct?
-    }
-    public EternalGoal(string name, string description, int point, int completions) : base(name, description,point, status completions)
-    {
-        _numberOfCompletion = completions;
     }
 
     public override void PopulateGoal()//loadgoal
     {
-
     }
     public override string GetGoalType()
     {
@@ -23,9 +18,7 @@ public class EternalGoal : BaseGoal
 
     public override string ToString()
     {
-        string GoalOutPut = "";
-        GoalOutPut = $"{_status} {name} {desciption}";//help with this
-        return GoalOutPut;
+        return $"[∞] {_name} ({_description}) — Completed {_numberOfCompletion} times";
     }
     public override string ListFile()///isnt this suppost to go to file?
     {
@@ -33,11 +26,17 @@ public class EternalGoal : BaseGoal
     }
     public override string StringforGoalFile()
     {
-        return $"EG#" + base.StringforGoalFile();
+        return $"EG#{_numberOfCompletion}#{_name}#{_description}#{_points}";
     }
-    // public override int RecordEvent()
-    // {
-    //     return 1; // fix
-    // }
+      public override int RecordEvent()
+    {
+      _numberOfCompletion++;
+        return _points;
+    }
+
+    public override int GetPoints()
+    {
+    return Getpoints();
+    }
 
 }

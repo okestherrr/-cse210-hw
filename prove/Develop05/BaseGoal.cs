@@ -1,21 +1,19 @@
 using System;
-using System.ComponentModel;
-using System.Numerics;
 public abstract class BaseGoal
 {
-    private string _name;
-    private string _description;
-    private int _points;
-    private bool _status;
+    public string _name;
+    public string _description;
+    public int _points;
+    public bool _status;
     private string _goalType;
-    public BaseGoal()
-    {
-        _name = "";
-        _description = "";
-        _status = false;
-        _goalType = "";
+    // public BaseGoal()
+    // {
+    //     _name = "";
+    //     _description = "";
+    //     _status = false;
+    //     _goalType = "";
 
-    }
+    // }
 
     public BaseGoal(string name, string description, int points, string goalType)
     {
@@ -28,7 +26,6 @@ public abstract class BaseGoal
     }
 
     public abstract int RecordEvent();
-
     public abstract void PopulateGoal();
     public virtual string MarkDone()
     {
@@ -62,11 +59,10 @@ public abstract class BaseGoal
     {
         _description = description;
     }
-    public int Getpoints()
-    {
-    
-        return _points;
-    }
+    public abstract int Getpoints();
+    // {
+    //     return _points;
+    // }
     public void SetPoints(int points)
     {
         _points = points;
@@ -75,14 +71,14 @@ public abstract class BaseGoal
     {
         return _goalType;
     }
-    public override string ToString()
-    {
-        return $"{MarkDone} {_description}";
-    }
+    public abstract override string ToString();
+    // {
+    //     return $"{MarkDone()} {GetName()} ({GetDescription()})";
+    // }
 
-    public virtual string StringforGoalFile()
-    {
-        return $"{_status}#{_name}#{_description}#{_points}"; // fix this  bc each goal needs to be overrid
-    }
+    public abstract string StringforGoalFile();
+    // {
+    //     return $"{_status}#{_name}#{_description}#{_points}"; // fix this  bc each goal needs to be overrid
+    // }
     
 }

@@ -16,7 +16,6 @@ public class Allgoals
     }
     public void LoadGoals()
     {
-
     }
     public void SendToFile()///isnt this suppost to go to file?
     {

@@ -24,26 +24,26 @@ public class Program
                     newJournal.AddEntry(journalEntry);
                     break;
 
-                case "2":
+                case "2"://display entry
                     // Journal displayEntry = new Journal();
                     // displayEntry
                     newJournal.DisplayJournal();
                     // display journal
                     break;
 
-                case "3":
+                case "3"://load journal
                     Console.Write("What is the filename to load: ");
                     string loadFile = Console.ReadLine();
                     newJournal.ReadFromFile(loadFile);
                     break;
 
-                case "4":
+                case "4"://save journal
                     Console.WriteLine("filename");
                     string Savefiles = Console.ReadLine();
                     newJournal.SaveToFile(Savefiles);
 
                     break;
-                case "5":
+                case "5"://edit entry
                     newJournal.EditEntry();
                     break;
 

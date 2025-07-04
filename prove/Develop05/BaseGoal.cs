@@ -17,12 +17,12 @@ public abstract class BaseGoal
 
     }
 
-    public BaseGoal(string name, string description, int points, bool status, string goalType)
+    public BaseGoal(string name, string description, int points, string goalType)
     {
         _name = name;
         _description = description;
         _points = points;
-        _status = status;
+        _status =false;
         _goalType = goalType;
 
     }
@@ -30,7 +30,7 @@ public abstract class BaseGoal
     public abstract int RecordEvent();
 
     public abstract void PopulateGoal();
-    public virtual string MarkDone()//displays goal details with status
+    public virtual string MarkDone()
     {
         if (_status)
         {
@@ -42,7 +42,7 @@ public abstract class BaseGoal
         }
 
     }
-    public abstract int GetPoints();//gets point value of goal
+    public abstract int GetPoints();
 
     public string GetName()
     {
@@ -71,8 +71,6 @@ public abstract class BaseGoal
     {
         _points = points;
     }
-    
-
     public virtual string GetGoalType()
     {
         return _goalType;
@@ -84,7 +82,7 @@ public abstract class BaseGoal
 
     public virtual string StringforGoalFile()
     {
-        return $" {_description}"; // fix this 
+        return $"{_status}#{_name}#{_description}#{_points}"; // fix this  bc each goal needs to be overrid
     }
     
 }

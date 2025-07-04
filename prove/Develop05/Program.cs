@@ -4,6 +4,7 @@ public class Program
 {
     static void Main(string[] args)
     {
+        Allgoals Goals = new Allgoals();
         while (true)
         {
             int menuSelection = DisplayMenu();
@@ -13,11 +14,23 @@ public class Program
             switch (menuSelection)
             {
                 case 1:// create new goal
-                    BaseGoal newGoal = new BaseGoal();
-                    newGoal.// fix this
+                    Console.WriteLine("what is the goal? ");
+                    string name = Console.ReadLine();
+                    Console.WriteLine("what is the description of the goal? ");
+                    string desciption = Console.ReadLine();
+                    Console.WriteLine("How many points do you want with this goal");
+                    int points = int.Parse(Console.ReadLine());
+                    Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
+                    string goalType = Console.ReadLine();
+
+                    BaseGoal newGoal = new BaseGoal(name, desciption, points, goalType);
+                  
+                    
+                    //fix this
                     // make goal and put goal into list of goals
                     break;
-                case 2:// list goals
+                case 2:// display and list goals
+                    Goals.DisplayGoals();// confirm this
 
                     break;
                 case 3://save goals
@@ -25,6 +38,9 @@ public class Program
                     break;
 
                 case 4: //load goals
+                    Console.WriteLine("What is the filename to load? ");
+                    string Savefiles = Console.ReadLine();
+                  //help complete this
 
                     break;
 
@@ -37,9 +53,9 @@ public class Program
                     break;
 
             }
-            Console.WriteLine("\nPress Enter to return to the menu...");
-            Console.ReadLine();
-            Console.Clear();
+            // Console.WriteLine("\nPress Enter to return to the menu...");
+            // Console.ReadLine();
+            // Console.Clear();
         }
     }
     private static int DisplayMenu()

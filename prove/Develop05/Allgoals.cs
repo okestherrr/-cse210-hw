@@ -39,8 +39,9 @@ public class Allgoals
     {
         Console.WriteLine($" You have {_totalScore} points.");
     }
-    private void GetFileName(string)// fix this
+    private void GetFileName()// fix this and where do iput this
     {
-
+        Console.WriteLine("What file do you want to save it to? ");
+        _filename = Console.ReadLine();
     } 
 }

@@ -57,6 +57,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSE210TestApp", "CSE210Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{22E8EE77-E636-4EC2-8D73-51BD7E627885}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chores", "Chores\Chores.csproj", "{7675F5A8-B4A6-4971-9222-D0702B2682CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetProject", "BudgetProject\BudgetProject.csproj", "{0994ED56-7A19-42F2-BB75-539D95762F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +155,14 @@ Global
 		{22E8EE77-E636-4EC2-8D73-51BD7E627885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22E8EE77-E636-4EC2-8D73-51BD7E627885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22E8EE77-E636-4EC2-8D73-51BD7E627885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7675F5A8-B4A6-4971-9222-D0702B2682CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7675F5A8-B4A6-4971-9222-D0702B2682CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7675F5A8-B4A6-4971-9222-D0702B2682CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7675F5A8-B4A6-4971-9222-D0702B2682CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0994ED56-7A19-42F2-BB75-539D95762F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0994ED56-7A19-42F2-BB75-539D95762F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0994ED56-7A19-42F2-BB75-539D95762F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0994ED56-7A19-42F2-BB75-539D95762F8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,5 @@
+
+class Income : Transaction
+{
+
+}

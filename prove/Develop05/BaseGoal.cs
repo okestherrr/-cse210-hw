@@ -39,7 +39,10 @@ public abstract class BaseGoal
         }
 
     }
-    public abstract int GetPoints();
+    public int GetPoints()
+    {
+        return _points;
+    }
 
     public string GetName()
     {
@@ -59,10 +62,6 @@ public abstract class BaseGoal
     {
         _description = description;
     }
-    public abstract int Getpoints();
-    // {
-    //     return _points;
-    // }
     public void SetPoints(int points)
     {
         _points = points;
@@ -76,7 +75,7 @@ public abstract class BaseGoal
     //     return $"{MarkDone()} {GetName()} ({GetDescription()})";
     // }
 
-    public abstract string StringforGoalFile();
+    public abstract string StringForGoalFile();
     // {
     //     return $"{_status}#{_name}#{_description}#{_points}"; // fix this  bc each goal needs to be overrid
     // }

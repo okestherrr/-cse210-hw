@@ -21,7 +21,7 @@ public class Allgoals
     {
         foreach (BaseGoal goal in _goals)
         {
-            Console.WriteLine(goal.StringforGoalFile());// write this to a file
+            Console.WriteLine(goal.StringForGoalFile());// write this to a file // helpppp go to past project for this 
         }
     }
     public void DisplayGoals()

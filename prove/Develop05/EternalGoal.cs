@@ -20,11 +20,7 @@ public class EternalGoal : BaseGoal
     {
         return $"[∞] {_name} ({_description}) — Completed {_numberOfCompletion} times";
     }
-    public override string ListFile()///isnt this suppost to go to file?
-    {
-
-    }
-    public override string StringforGoalFile()
+    public override string StringForGoalFile()
     {
         return $"EG#{_numberOfCompletion}#{_name}#{_description}#{_points}";
     }
@@ -32,11 +28,6 @@ public class EternalGoal : BaseGoal
     {
       _numberOfCompletion++;
         return _points;
-    }
-
-    public override int GetPoints()
-    {
-    return Getpoints();
     }
 
 }

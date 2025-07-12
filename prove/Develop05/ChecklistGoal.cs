@@ -21,7 +21,7 @@ public class ChecklistGoal : BaseGoal
     public override void PopulateGoal()
     {
     }
-    public override string StringforGoalFile()
+    public override string StringForGoalFile()
     {
         return $"CLG#{_status}#{_current}/{_maxTimes}#{_bonus}#{_name}#{_description}#{_points}";
     }
@@ -33,10 +33,6 @@ public class ChecklistGoal : BaseGoal
             _status = true;
             return _points + _bonus;
         }
-        return _points;
-    }
-    public override int GetPoints()
-    {
         return _points;
     }
     public override string ToString()

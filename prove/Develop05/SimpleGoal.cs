@@ -9,18 +9,13 @@ public class SimpleGoal : BaseGoal
     public override void PopulateGoal()
     {
     }
-    public override string StringforGoalFile()
+    public override string StringForGoalFile()
     {
         return $"SG#{_status}#{_name}#{_description}#{_points}";
     }
     public override int RecordEvent()
     {
         _status = true;
-        return _points;
-    }
-
-    public override int GetPoints()
-    {
         return _points;
     }
     public override string ToString()

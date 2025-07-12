@@ -23,12 +23,27 @@ public class Program
                     Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
                     string goalType = Console.ReadLine();
 
-                    BaseGoal newGoal = new BaseGoal(name, desciption, points, goalType);
+                    if (goalType == "Checklist")
+                    {
+                        Console.WriteLine("What is the bonus? ");
+                        int bonus = int.Parse(Console.ReadLine());
+                        // get max and other thng
 
+                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus);// add completion and max later
+                    }
+                    else if (goalType == "Eternal")
+                    {
+                        // do the same as checklist goals but with completions and are zero
+                    }
+                    else if ( goalType == "Simple")
+                    {
+                        SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points);
+                    }
+                    
                     // make goal and put goal into list of goals
                     break;
                 case 2:// display and list goals
-                    Goals.DisplayGoals();// confirm this
+                   goal.DisplayGoals();// confirm this
 
                     break;
                 case 3://save goals

@@ -15,7 +15,7 @@ public class Program
             {
                 case 1:// create new goal
                     Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
-                    string goalType = Console.ReadLine();
+                    string goalType = Console.ReadLine().ToLower();
                     Console.WriteLine("what is the name of the goal? ");
                     string name = Console.ReadLine();
                     Console.WriteLine("what is a short description of the goal? ");
@@ -24,7 +24,7 @@ public class Program
                     int points = int.Parse(Console.ReadLine());
 
 
-                    if (goalType == "Checklist")
+                    if (goalType == "checklist")
                     {
                         Console.WriteLine("How many times does this goal need to be accomplished? ");
                         int max = int.Parse(Console.ReadLine());
@@ -34,15 +34,19 @@ public class Program
                         // fix this with competion and max
 
                         ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus, 0, max);// add completion and max later
+                        goal.AddGoals(checklistGoal);
                     }
-                    else if (goalType == "Eternal")
+                    else if (goalType == "eternal")
                     {
-                    // do the same as checklist goals but with completions and are zero
-                       EternalGoal eternalGoal = new EternalGoal(name, desciption, points, 0);
+                        // do the same as checklist goals but with completions and are zero
+                        EternalGoal eternalGoal = new EternalGoal(name, desciption, points, 0);
+                        goal.AddGoals(eternalGoal);
                     }
-                    else if (goalType == "Simple")
+                    else if (goalType == "simple")
                     {
                         SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points);
+
+                        goal.AddGoals(simpleGoal);
                     }
                     
                     // make goal and put goal into list of goals

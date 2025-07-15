@@ -1,3 +1,5 @@
+using System.Threading.Channels;
+
 public class Allgoals
 {
     private int _totalScore;
@@ -42,5 +44,6 @@ public class Allgoals
     {
         Console.WriteLine("What file do you want to save it to? ");
         _filename = Console.ReadLine();
-    } 
+    }
+    
 }

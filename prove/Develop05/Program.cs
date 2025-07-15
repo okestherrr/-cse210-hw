@@ -14,28 +14,33 @@ public class Program
             switch (choice)
             {
                 case 1:// create new goal
-                    Console.WriteLine("what is the goal? ");
+                    Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
+                    string goalType = Console.ReadLine();
+                    Console.WriteLine("what is the name of the goal? ");
                     string name = Console.ReadLine();
-                    Console.WriteLine("what is the description of the goal? ");
+                    Console.WriteLine("what is a short description of the goal? ");
                     string desciption = Console.ReadLine();
                     Console.WriteLine("How many points do you want with this goal");
                     int points = int.Parse(Console.ReadLine());
-                    Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
-                    string goalType = Console.ReadLine();
+
 
                     if (goalType == "Checklist")
                     {
-                        Console.WriteLine("What is the bonus? ");
+                        Console.WriteLine("How many times does this goal need to be accomplished? ");
+                        int max = int.Parse(Console.ReadLine());
+                        Console.WriteLine("What is the bonus for accomplshing this goal that many times? ");
                         int bonus = int.Parse(Console.ReadLine());
-                        // get max and other thng
 
-                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus);// add completion and max later
+                        // fix this with competion and max
+
+                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus, 0, max);// add completion and max later
                     }
                     else if (goalType == "Eternal")
                     {
-                        // do the same as checklist goals but with completions and are zero
+                    // do the same as checklist goals but with completions and are zero
+                       EternalGoal eternalGoal = new EternalGoal(name, desciption, points, 0);
                     }
-                    else if ( goalType == "Simple")
+                    else if (goalType == "Simple")
                     {
                         SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points);
                     }
@@ -43,22 +48,29 @@ public class Program
                     // make goal and put goal into list of goals
                     break;
                 case 2:// display and list goals
-                   goal.DisplayGoals();// confirm this
+                  goal.DisplayGoals();
+                  goal.DisplayScore();// confirm this
 
                     break;
                 case 3://save goals
+                    Console.WriteLine("What is the filename for the goal file? ");
+        
+                    // save to that file- help
 
                     break;
 
                 case 4: //load goals
-                    Console.WriteLine("What is the filename to load? ");
+                    Console.WriteLine("What is the filename for the goal file? ");
                     string Savefiles = Console.ReadLine();
                     //help complete this
-
+                    goal.DisplayScore();
                     break;
 
                 case 5://recordevent 
-
+                    goal.DisplayGoals();
+                    Console.WriteLine("What goal did you accomplish? ");
+                    
+                    string completion = Console.ReadLine();
                     break;
 
                 case 6:

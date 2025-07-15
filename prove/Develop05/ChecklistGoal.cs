@@ -5,7 +5,7 @@ public class ChecklistGoal : BaseGoal
     private readonly int _bonus;
     private readonly int _maxTimes;
     private int _current;
-    
+
     // private int _numberOfCompletion;
 
     public ChecklistGoal(string name, string description, int points, bool status, int bonus, int completions, int max) : base(name, description, points, "Checklist")
@@ -39,5 +39,11 @@ public class ChecklistGoal : BaseGoal
     {
         return $"{(_status ? "[X]" : "[ ]")} {_name} ({_description}) — {_current}/{_maxTimes}";
     }
+    public override void DisplayEndMessage()
+    {
+        int total_sum = _bonus + _points;
+        Console.Write($"Congradulations! You have earned {_bonus}points!");
+        Console.Write($"You now have {total_sum}");
+    }// did i do this right?
 
 }

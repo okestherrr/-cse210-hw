@@ -20,7 +20,7 @@ public abstract class BaseGoal
         _name = name;
         _description = description;
         _points = points;
-        _status =false;
+        _status = false;
         _goalType = goalType;
 
     }
@@ -79,5 +79,11 @@ public abstract class BaseGoal
     // {
     //     return $"{_status}#{_name}#{_description}#{_points}"; // fix this  bc each goal needs to be overrid
     // }
+    public virtual void DisplayEndMessage()
+    {
+        int total_sum =  _points;
+        Console.Write($"Congradulations! You have earned {total_sum}points!");
+        Console.Write($"You now have {total_sum}");
+    }// did i do this right?
     
 }

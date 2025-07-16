@@ -18,7 +18,7 @@ public class EternalGoal : BaseGoal
 
     public override string ToString()
     {
-        return $"[∞] {_name} ({_description}) — Completed {_numberOfCompletion} times";
+        return $"[∞] {_name} ({_description}) —- Currently completed: {_numberOfCompletion}";
     }
     public override string StringForGoalFile()
     {

@@ -19,31 +19,41 @@ public class Allgoals
     public void LoadGoals()
     {
     }
-    public void SendToFile()///isnt this suppost to go to file?
+    public void SendToFile(string _filename)///isnt this suppost to go to file?
     {
-        foreach (BaseGoal goal in _goals)
+        using (StreamWriter outputFile = new StreamWriter(_filename))
         {
-            Console.WriteLine(goal.StringForGoalFile());// write this to a file // helpppp go to past project for this 
+            outputFile.WriteLine(_totalScore);
+            foreach (var goal in _goals)
+            {
+                outputFile.WriteLine(goal.StringForGoalFile());// write this to a file // helpppp go to past project for this 
+            }
         }
+
     }
     public void DisplayGoals()
     {
         Console.WriteLine("The Goals are: ");
         int index = 1;
-        foreach (BaseGoal goal in _goals)
+        foreach (var goal in _goals)
         {
             Console.WriteLine($"{index}. {goal.ToString()}");
             index++;
         }
+
     }
     public void DisplayScore()
     {
         Console.WriteLine($" You have {_totalScore} points.");
     }
-    private void GetFileName()// fix this and where do iput this
+    // private void GetFileName()// fix this and where do iput this
+    // {
+    //     Console.WriteLine("What file do you want to save it to? ");
+    //     _filename = Console.ReadLine();
+    // }
+    public void CompleteGoal(int index)
     {
-        Console.WriteLine("What file do you want to save it to? ");
-        _filename = Console.ReadLine();
+        _goals[index -1].RecordEvent();
     }
     
 }

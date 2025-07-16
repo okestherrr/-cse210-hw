@@ -33,7 +33,7 @@ public class Program
 
                         // fix this with competion and max
 
-                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus, 0, max);// add completion and max later
+                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points,false, bonus,max);// add completion and max later
                         goal.AddGoals(checklistGoal);
                     }
                     else if (goalType == "eternal")
@@ -58,7 +58,10 @@ public class Program
                     break;
                 case 3://save goals
                     Console.WriteLine("What is the filename for the goal file? ");
-        
+                    //call savetofile then pass it in
+                    string filename = Console.ReadLine();
+                    goal.SendToFile(filename);
+
                     // save to that file- help
 
                     break;
@@ -74,7 +77,9 @@ public class Program
                     goal.DisplayGoals();
                     Console.WriteLine("What goal did you accomplish? ");
                     
-                    string completion = Console.ReadLine();
+                    int completion = int.Parse(Console.ReadLine());
+                    goal.CompleteGoal(completion);
+
                     break;
 
                 case 6:

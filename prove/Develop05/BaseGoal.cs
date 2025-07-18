@@ -1,11 +1,12 @@
 using System;
 public abstract class BaseGoal
 {
-    public string _name;
-    public string _description;
-    public int _points;
-    public bool _status;
     private string _goalType;
+    protected string _name;
+    protected string _description;
+    protected int _points;
+    protected bool _status;
+    
     // public BaseGoal()
     // {
     //     _name = "";
@@ -21,6 +22,15 @@ public abstract class BaseGoal
         _description = description;
         _points = points;
         _status = false;
+        _goalType = goalType;
+
+    }
+    public BaseGoal(string name, string description, int points,bool status, string goalType)
+    {
+        _name = name;
+        _description = description;
+        _points = points;
+        _status = status;
         _goalType = goalType;
 
     }

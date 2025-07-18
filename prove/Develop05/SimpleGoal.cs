@@ -2,7 +2,7 @@ using System;
 
 public class SimpleGoal : BaseGoal
 {
-    public SimpleGoal(string name, string description, int points) : base(name, description, points, "Simple")
+    public SimpleGoal(string name, string description, int points, bool status) : base(name, description, points,status, "Simple")
     {
     }
 
@@ -11,7 +11,7 @@ public class SimpleGoal : BaseGoal
     }
     public override string StringForGoalFile()
     {
-        return $"SG#{_status}#{_name}#{_description}#{_points}";
+        return $"SG#{_name}#{_description}#{_points}#{_status}";
     }
     public override int RecordEvent()
     {

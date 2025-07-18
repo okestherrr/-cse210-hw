@@ -3,9 +3,10 @@ public class EternalGoal : BaseGoal
 {
     private int _numberOfCompletion;
 
-        public EternalGoal(string name, string description, int point, int completions) : base(name, description, point, "Eternal")
+        public EternalGoal(string name, string description, int point, bool status, int completion) : base(name, description, point, status, "Eternal")
     {
-        _numberOfCompletion = 0;// is this correct?
+        
+        _numberOfCompletion = completion;// is this correct?
     }
 
     public override void PopulateGoal()//loadgoal
@@ -22,7 +23,7 @@ public class EternalGoal : BaseGoal
     }
     public override string StringForGoalFile()
     {
-        return $"EG#{_numberOfCompletion}#{_name}#{_description}#{_points}";
+        return $"EG#{_name}#{_description}#{_points}#{_status}#{_numberOfCompletion}#";
     }
       public override int RecordEvent()
     {

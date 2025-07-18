@@ -5,7 +5,8 @@ public class Program
     static Allgoals goal = new Allgoals();
     static void Main(string[] args)
     {
-        while (true)
+        bool running = true;
+        while (running)
         {
             int choice = DisplayMenu();
 
@@ -33,27 +34,27 @@ public class Program
 
                         // fix this with competion and max
 
-                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points,false, bonus,max);// add completion and max later
+                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus, max);// add completion and max later
                         goal.AddGoals(checklistGoal);
                     }
                     else if (goalType == "eternal")
                     {
                         // do the same as checklist goals but with completions and are zero
-                        EternalGoal eternalGoal = new EternalGoal(name, desciption, points, 0);
+                        EternalGoal eternalGoal = new EternalGoal(name, desciption, points, false, 0);
                         goal.AddGoals(eternalGoal);
                     }
                     else if (goalType == "simple")
                     {
-                        SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points);
+                        SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points, false);
 
                         goal.AddGoals(simpleGoal);
                     }
-                    
+
                     // make goal and put goal into list of goals
                     break;
                 case 2:// display and list goals
-                  goal.DisplayGoals();
-                  goal.DisplayScore();// confirm this
+                    goal.DisplayGoals();
+                    goal.DisplayScore();// confirm this
 
                     break;
                 case 3://save goals
@@ -68,21 +69,23 @@ public class Program
 
                 case 4: //load goals
                     Console.WriteLine("What is the filename for the goal file? ");
-                    string Savefiles = Console.ReadLine();
+                    string _filename = Console.ReadLine();
                     //help complete this
+                    goal.ReadFromFile(_filename);
                     goal.DisplayScore();
                     break;
 
                 case 5://recordevent 
                     goal.DisplayGoals();
                     Console.WriteLine("What goal did you accomplish? ");
-                    
+
                     int completion = int.Parse(Console.ReadLine());
                     goal.CompleteGoal(completion);
 
                     break;
 
                 case 6:
+                    running = false;
                     Console.WriteLine("Bye!");
                     break;
 

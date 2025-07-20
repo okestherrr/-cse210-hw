@@ -1,18 +1,17 @@
-using System;
-
 public class Expense : Transaction
 {
-    private SortCategory _category;
-    public Expense(SortCategory category)
+    private Category _category;
+
+    public Expense(decimal amount, DateTime date, string description, Category category)
+        : base(amount, date, description)
     {
         _category = category;
     }
-    public override void ApplyItToBalance(Program program)
-    {
 
-    }
-    public string GetCategory()// find out why this is not working
+    public override void ApplyToBalance(User user)
     {
-
+        user.UpdateBalance(-_amount);
     }
+
+    public Category GetCategory() => _category;
 }

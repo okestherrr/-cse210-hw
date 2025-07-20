@@ -3,7 +3,7 @@ public class Income : Transaction
     public Income(decimal amount, DateTime date, string description)
         : base(amount, date, description) { }
 
-    public override void ApplyToBalance(Program user)
+    public override void ApplyToBalance(User user)
     {
         user.UpdateBalance(_amount);
     }

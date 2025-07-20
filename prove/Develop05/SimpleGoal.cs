@@ -46,7 +46,7 @@ public class SimpleGoal : BaseGoal
         }
         else
         {
-            Console.WriteLine("This goal is done.");
+            Console.WriteLine("YOUR GOAL IS DONE.");
         }
     }
 

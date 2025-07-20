@@ -1,8 +1,8 @@
-public class SortCategory
+public class Category
 {
     private string _name;
 
-    public SortCategory(string name)
+    public Category(string name)
     {
         _name = name;
     }

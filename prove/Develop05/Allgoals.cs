@@ -67,17 +67,17 @@ public class AllGoals
 
             switch (type)
             {
-                case "SimpleGoal":
+                case "Simple":
                     bool simpleStatus = bool.Parse(parts[4]);
                     _goals.Add(new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), simpleStatus));
                     break;
 
-                case "EternalGoal":
+                case "Eternal":
                     bool eternalStatus = bool.Parse(parts[4]);
                     _goals.Add(new EternalGoal(parts[1], parts[2], int.Parse(parts[3]), eternalStatus));
                     break;
 
-                case "ChecklistGoal":
+                case "Checklist":
                     int targetCount = int.Parse(parts[4]);
                     int bonus = int.Parse(parts[5]);
                     int currentCount = int.Parse(parts[6]);

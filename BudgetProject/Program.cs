@@ -1,6 +1,4 @@
-using System;
-
-public class Program
+public class User
 {
     private string _name;
     private decimal _balance;
@@ -8,7 +6,7 @@ public class Program
     private List<Budget> _budgets = new List<Budget>();
     private List<Goal> _goals = new List<Goal>();
 
-    public Program(string name, decimal initialBalance)
+    public User(string name, decimal initialBalance)
     {
         _name = name;
         _balance = initialBalance;

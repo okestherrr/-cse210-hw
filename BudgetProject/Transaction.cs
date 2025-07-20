@@ -11,5 +11,5 @@ public abstract class Transaction
         _description = description;
     }
 
-    public abstract void ApplyToBalance(Program user);
+    public abstract void ApplyToBalance(User user);
 }

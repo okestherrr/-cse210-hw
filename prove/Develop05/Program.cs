@@ -8,36 +8,38 @@ class Program
 
         while (true)
         {
-            Console.WriteLine("\nMenu:");
+            Console.WriteLine("\nMenu Options:");
             Console.WriteLine("1. Create new goal");
             Console.WriteLine("2. List goals");
             Console.WriteLine("3. Save goals");
             Console.WriteLine("4. Load goals");
-            Console.WriteLine("5. Record goal completion");
+            Console.WriteLine("5. Record Event");
             Console.WriteLine("6. Display score");
             Console.WriteLine("7. Quit");
-            Console.Write("Choose an option: ");
+            Console.Write("Select a choice from the menu: ");
             string input = Console.ReadLine();
 
             switch (input)
             {
                 case "1":
-                    Console.WriteLine("Select goal type:");
-                    Console.WriteLine("1. Simple").;
+                    Console.WriteLine("The type of goals are: ");
+                    Console.WriteLine("1. Simple");
                     Console.WriteLine("2. Eternal");
                     Console.WriteLine("3. Checklist");
+                    Console.WriteLine("Which type of goal do you want to do? ");
                     string typeChoice = Console.ReadLine();
                     BaseGoal newGoal = null;
                     switch (typeChoice)
                     {
                         case "1":
-                            new SimpleGoal("", "", 0, false);
+                            newGoal= new SimpleGoal("", "", 0, false);
+                            
                             break;
                         case "2":
-                            new EternalGoal("", "", 0, false);
+                           newGoal=  new EternalGoal("", "", 0, false);
                             break;
                         case "3":
-                            new ChecklistGoal("", "", 0, 0, 0, false);
+                            newGoal= new ChecklistGoal("", "", 0, 0, 0, false);
                             break;
                     }
                     if (newGoal != null)
@@ -72,7 +74,7 @@ class Program
                     return;
 
                 default:
-                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("NOPE INVALID.");
                 break;
             }
         }

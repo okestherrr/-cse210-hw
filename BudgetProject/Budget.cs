@@ -1,10 +1,10 @@
 public class Budget
 {
-    private SortCategory _category;
+    private Category _category;
     private decimal _limit;
     private decimal _currentSpending;
 
-    public Budget(SortCategory category, decimal limit)
+    public Budget(Category category, decimal limit)
     {
         _category = category;
         _limit = limit;

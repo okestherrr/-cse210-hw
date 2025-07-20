@@ -1,14 +1,15 @@
 public abstract class Transaction
 {
-    private int _amount;
-    private DateTime _date;
-    private string _description;
+    protected decimal _amount;
+    protected DateTime _date;
+    protected string _description;
 
-    public Transaction(int amount, DateTime date, string desciption)
+    public Transaction(decimal amount, DateTime date, string description)
     {
         _amount = amount;
         _date = date;
-        _description = desciption;
+        _description = description;
     }
-    public abstract void ApplyItToBalance(Program program);
+
+    public abstract void ApplyToBalance(Program user);
 }

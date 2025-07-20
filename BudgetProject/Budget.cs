@@ -1,32 +1,22 @@
-using System.ComponentModel;
-
 public class Budget
 {
     private SortCategory _category;
-    private int _limit;
-    private int _currentSpendings;
-    public Budget(SortCategory category, int limit, int currentSpendings)
+    private decimal _limit;
+    private decimal _currentSpending;
+
+    public Budget(SortCategory category, decimal limit)
     {
         _category = category;
         _limit = limit;
-        _currentSpendings = currentSpendings;
+        _currentSpending = 0;
+    }
 
-    }
-    public void AddExpense()
+    public void AddExpense(decimal amount)
     {
+        _currentSpending += amount;
+    }
 
-    }
-    public bool IsOverBudget()// did i make too much damage??
-    {
-        if (_currentSpendings >= _limit)//make if statement here to define next moves
-        {
-            Console.WriteLine("Mo'For stop doing so much damage! Get a hold of yo self.");
-            Console.ReadLine();
-        }
-        else if()
-    }
-    public int GetRemainingMoney()
-    {
+    public bool IsOverBudget() => _currentSpending > _limit;
 
-    }
+    public decimal GetRemainingBudget() => _limit - _currentSpending;
 }

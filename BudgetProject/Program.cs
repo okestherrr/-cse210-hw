@@ -3,34 +3,31 @@ using System;
 public class Program
 {
     private string _name;
-    private int _balance;
-    private List<Transaction> _transaction;
+    private decimal _balance;
+    private List<Transaction> _transactions = new List<Transaction>();
+    private List<Budget> _budgets = new List<Budget>();
+    private List<Goal> _goals = new List<Goal>();
 
-    private List<Goals> _goals;
-    public Program(string name, int balance)
+    public Program(string name, decimal initialBalance)
     {
         _name = name;
-        _balance = balance;
+        _balance = initialBalance;
     }
-    public void AddTransaction()
-    {
-        return;
-    }
-    public void Addbudget()
-    {
-        return;
-    }
-    public void AddGoal(Budget budget)
-    {
 
-    }
-    public int Getbalance()// fix this by adding to balance and getting info
+    public void AddTransaction(Transaction transaction)
     {
-        Console.Write("what is the your balance? ");
-        int balance = int.Parse(Console.ReadLine());
+        transaction.ApplyToBalance(this);
+        _transactions.Add(transaction);
     }
-    public void UpdateTheBalance()
+
+    public void AddBudget(Budget budget) => _budgets.Add(budget);
+
+    public void AddGoal(Goal goal) => _goals.Add(goal);
+
+    public decimal GetBalance() => _balance;
+
+    public void UpdateBalance(decimal amount)
     {
-        _balance.Add(Getbalance);
+        _balance += amount;
     }
 }

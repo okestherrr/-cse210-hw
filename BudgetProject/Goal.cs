@@ -1,25 +1,22 @@
-public class Goals
+public class Goal
 {
     private string _name;
-    private int _idealAmount;
-    private int _currentAmount;
+    private decimal _targetAmount;
+    private decimal _currentAmount;
 
-    public Goals(string name, int idealAmount, int currentAmount)
+    public Goal(string name, decimal targetAmount)
     {
         _name = name;
-        _idealAmount = idealAmount;
-        _currentAmount = currentAmount;
+        _targetAmount = targetAmount;
+        _currentAmount = 0;
     }
-    public void AdddGoal(int amount)
-    {
 
-    }
-    public bool IsGoalAchieved()
+    public void AddToGoal(decimal amount)
     {
+        _currentAmount += amount;
+    }
 
-    }
-    public int GetRemainingMoney()
-    {
-        
-    }
+    public bool IsGoalReached() => _currentAmount >= _targetAmount;
+
+    public decimal GetRemainingAmount() => _targetAmount - _currentAmount;
 }

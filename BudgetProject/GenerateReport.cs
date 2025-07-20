@@ -1,16 +1,17 @@
-public class GenerateReport
+public class ReportGenerator
 {
-    //generates report
-      public string GenerateTransactionReport(List<Transaction> transactions)//damage done
+    public string GenerateTransactionReport(List<Transaction> transactions)
     {
-
+        return $"Total Transactions: {transactions.Count}";
     }
+
     public string GenerateBudgetReport(List<Budget> budgets)
     {
-
+        return $"Budgets: {budgets.Count}";
     }
-    public string GenerateProgressReport(List<Goals> goals)
-    {
 
+    public string GenerateGoalProgress(List<Goal> goals)
+    {
+        return $"Goals Tracked: {goals.Count}";
     }
 }

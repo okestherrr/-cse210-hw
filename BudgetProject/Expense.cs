@@ -1,17 +1,14 @@
 public class Expense : Transaction
 {
-    private Category _category;
+    public Expense(decimal amount, string description, string category) : base(amount, description, category) { }
 
-    public Expense(decimal amount, DateTime date, string description, Category category)
-        : base(amount, date, description)
+    public override void Apply(BudgetManager manager)
     {
-        _category = category;
+        manager.AddToBalance(-_amount);
     }
 
-    public override void ApplyToBalance(User user)
+    public override string GetInfo()
     {
-        user.UpdateBalance(-_amount);
+        return $"{_date.ToShortDateString()} | EXPENSE | -${_amount} | {_description} [{_category}]";
     }
-
-    public Category GetCategory() => _category;
 }

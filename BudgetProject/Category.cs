@@ -7,5 +7,5 @@ public class Category
         _name = name;
     }
 
-    public string GetName() => _name;
+    public string Name => _name;
 }

@@ -1,31 +1,86 @@
-public class User
+class Program
 {
-    private string _name;
-    private decimal _balance;
-    private List<Transaction> _transactions = new List<Transaction>();
-    private List<Budget> _budgets = new List<Budget>();
-    private List<Goal> _goals = new List<Goal>();
-
-    public User(string name, decimal initialBalance)
+    static void Main(string[] args)
     {
-        _name = name;
-        _balance = initialBalance;
+        BudgetManager budgetManager = new BudgetManager();
+        CategoryManager categoryManager = new CategoryManager();
+        ReportGenerator reportGenerator = new ReportGenerator();
+        bool running = true;
+
+        // Predefined categories
+        categoryManager.AddCategory("Food");
+        categoryManager.AddCategory("Rent");
+        categoryManager.AddCategory("Utilities");
+        categoryManager.AddCategory("Salary");
+        categoryManager.AddCategory("Other");
+
+        Console.WriteLine("Welcome to Budget Tracker!");
+
+        while (running)
+        {
+            Console.WriteLine("\nMenu:");
+            Console.WriteLine("1. Add Income");
+            Console.WriteLine("2. Add Expense");
+            Console.WriteLine("3. View Balance");
+            Console.WriteLine("4. View Transaction History");
+            Console.WriteLine("5. View Spending Report by Category");
+            Console.WriteLine("6. Exit");
+            Console.Write("Choose an option: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    AddTransaction(budgetManager, categoryManager, isIncome: true);
+                    break;
+                case "2":
+                    AddTransaction(budgetManager, categoryManager, isIncome: false);
+                    break;
+                case "3":
+                    Console.WriteLine($"Current Balance: ${budgetManager.GetBalance()}");
+                    break;
+                case "4":
+                    budgetManager.PrintHistory();
+                    break;
+                case "5":
+                    reportGenerator.GenerateSpendingByCategory(budgetManager.GetTransactions());
+                    break;
+                case "6":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Try again.");
+                    break;
+            }
+        }
+
+        Console.WriteLine("Goodbye!");
     }
 
-    public void AddTransaction(Transaction transaction)
+    static void AddTransaction(BudgetManager manager, CategoryManager categoryManager, bool isIncome)
     {
-        transaction.ApplyToBalance(this);
-        _transactions.Add(transaction);
-    }
+        Console.Write("Enter amount: ");
+        decimal amount = decimal.Parse(Console.ReadLine());
 
-    public void AddBudget(Budget budget) => _budgets.Add(budget);
+        Console.Write("Enter description: ");
+        string description = Console.ReadLine();
 
-    public void AddGoal(Goal goal) => _goals.Add(goal);
+        categoryManager.DisplayCategories();
+        Console.Write("Enter category: ");
+        string category = Console.ReadLine();
 
-    public decimal GetBalance() => _balance;
+        if (!categoryManager.IsValidCategory(category))
+        {
+            Console.WriteLine("Invalid category. Try again.");
+            return;
+        }
 
-    public void UpdateBalance(decimal amount)
-    {
-        _balance += amount;
+        Transaction transaction = isIncome
+            ? new Income(amount, description, category)
+            : new Expense(amount, description, category);
+
+        manager.AddTransaction(transaction);
+
+        Console.WriteLine($"{(isIncome ? "Income" : "Expense")} added successfully.");
     }
 }

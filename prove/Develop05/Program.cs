@@ -1,120 +1,80 @@
 using System;
 
-public class Program
-{
-    static Allgoals goal = new Allgoals();
+class Program
+    {
     static void Main(string[] args)
     {
-        bool running = true;
-        while (running)
-        {
-            int choice = DisplayMenu();
+        AllGoals manager = new AllGoals();
 
-            Console.Clear();
-
-            switch (choice)
-            {
-                case 1:// create new goal
-                    Console.WriteLine("What goal type is this?( Eternal, Checklist, or Simple) ");
-                    string goalType = Console.ReadLine().ToLower();
-                    Console.WriteLine("what is the name of the goal? ");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("what is a short description of the goal? ");
-                    string desciption = Console.ReadLine();
-                    Console.WriteLine("How many points do you want with this goal");
-                    int points = int.Parse(Console.ReadLine());
-
-
-                    if (goalType == "checklist")
-                    {
-                        Console.WriteLine("How many times does this goal need to be accomplished? ");
-                        int max = int.Parse(Console.ReadLine());
-                        Console.WriteLine("What is the bonus for accomplshing this goal that many times? ");
-                        int bonus = int.Parse(Console.ReadLine());
-
-                        // fix this with competion and max
-
-                        ChecklistGoal checklistGoal = new ChecklistGoal(name, desciption, points, false, bonus, max);// add completion and max later
-                        goal.AddGoals(checklistGoal);
-                    }
-                    else if (goalType == "eternal")
-                    {
-                        // do the same as checklist goals but with completions and are zero
-                        EternalGoal eternalGoal = new EternalGoal(name, desciption, points, false, 0);
-                        goal.AddGoals(eternalGoal);
-                    }
-                    else if (goalType == "simple")
-                    {
-                        SimpleGoal simpleGoal = new SimpleGoal(name, desciption, points, false);
-
-                        goal.AddGoals(simpleGoal);
-                    }
-
-                    // make goal and put goal into list of goals
-                    break;
-                case 2:// display and list goals
-                    goal.DisplayGoals();
-                    goal.DisplayScore();// confirm this
-
-                    break;
-                case 3://save goals
-                    Console.WriteLine("What is the filename for the goal file? ");
-                    //call savetofile then pass it in
-                    string filename = Console.ReadLine();
-                    goal.SendToFile(filename);
-
-                    // save to that file- help
-
-                    break;
-
-                case 4: //load goals
-                    Console.WriteLine("What is the filename for the goal file? ");
-                    string _filename = Console.ReadLine();
-                    //help complete this
-                    goal.ReadFromFile(_filename);
-                    goal.DisplayScore();
-                    break;
-
-                case 5://recordevent 
-                    goal.DisplayGoals();
-                    Console.WriteLine("What goal did you accomplish? ");
-
-                    int completion = int.Parse(Console.ReadLine());
-                    goal.CompleteGoal(completion);
-
-                    break;
-
-                case 6:
-                    running = false;
-                    Console.WriteLine("Bye!");
-                    break;
-
-            }
-        }
-    }
-    private static int DisplayMenu()
-    {
         while (true)
         {
-            Console.WriteLine("Menu Options:");
-            Console.WriteLine("1. Create New Goals");
-            Console.WriteLine("2. List Goals");
-            Console.WriteLine("3. Save Goals");
-            Console.WriteLine("4. Load Goals");
-            Console.WriteLine("5. Record Event");
-            Console.WriteLine("6. Quit");
-            Console.Write("Please select a choice from the menu: ");
+            Console.WriteLine("\nMenu:");
+            Console.WriteLine("1. Create new goal");
+            Console.WriteLine("2. List goals");
+            Console.WriteLine("3. Save goals");
+            Console.WriteLine("4. Load goals");
+            Console.WriteLine("5. Record goal completion");
+            Console.WriteLine("6. Display score");
+            Console.WriteLine("7. Quit");
+            Console.Write("Choose an option: ");
             string input = Console.ReadLine();
-            if (int.TryParse(input, out int choice))
+
+            switch (input)
             {
-                return choice;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a number from 1 to 6.");
+                case "1":
+                    Console.WriteLine("Select goal type:");
+                    Console.WriteLine("1. Simple").;
+                    Console.WriteLine("2. Eternal");
+                    Console.WriteLine("3. Checklist");
+                    string typeChoice = Console.ReadLine();
+                    BaseGoal newGoal = null;
+                    switch (typeChoice)
+                    {
+                        case "1":
+                            new SimpleGoal("", "", 0, false);
+                            break;
+                        case "2":
+                            new EternalGoal("", "", 0, false);
+                            break;
+                        case "3":
+                            new ChecklistGoal("", "", 0, 0, 0, false);
+                            break;
+                    }
+                    if (newGoal != null)
+                    {
+                        newGoal.PopulateGoal();
+                        manager.AddGoal(newGoal);
+                    }
+                break;
+                case "2":
+                    manager.ListGoals();
+                break;
+
+                case "3":
+                    Console.Write("Enter filename to save to: ");
+                    manager.SaveGoals(Console.ReadLine());
+                break;
+
+                case "4":
+                    Console.Write("Enter filename to load from: ");
+                    manager.LoadGoals(Console.ReadLine());
+                    break;
+
+                case "5":
+                    manager.RecordGoalEvent();
+                    break;
+
+                case "6":
+                    manager.DisplayScore();
+                    break;
+
+                case "7":
+                    return;
+
+                default:
+                    Console.WriteLine("Invalid option.");
+                break;
             }
         }
-
-    }
-    
+}
 }

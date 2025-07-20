@@ -1,111 +1,101 @@
-using System.Threading.Channels;
-
-public class Allgoals
+using System;
+using System.Collections.Generic;
+using System.IO;
+public class AllGoals
 {
-    private int _totalScore;
-    private string _filename;
+    private List<BaseGoal> _goals = new List<BaseGoal>();
+    private int _totalPoints;
 
-    private List<BaseGoal> _goals;
-    public Allgoals()
-    {
-        _totalScore = 0;
-        _goals = new List<BaseGoal>();
-    }
+    public void AddGoal(BaseGoal goal) => _goals.Add(goal);
 
-    public void AddGoals(BaseGoal goal)
+    public void ListGoals()
     {
-        _goals.Add(goal);
-    }
-    public void LoadGoals()
-    {
-    }
-    public void SendToFile(string _filename)///isnt this suppost to go to file?
-    {
-    using (StreamWriter outputFile = new StreamWriter(_filename))
+        Console.WriteLine("Your goals:");
+        for (int i = 0; i < _goals.Count; i++)
         {
-            outputFile.WriteLine(_totalScore);
-            foreach (var goal in _goals)
-            {
-                outputFile.WriteLine(goal.StringForGoalFile());// write this to a file // helpppp go to past project for this 
-            }
+            Console.WriteLine($"{i + 1}. {_goals[i].GetDetails()}");
         }
-
     }
-    public void ReadFromFile(string _filename)
-     {
-    //     if (!File.Exists(_filename))
-    //     {
-    //         Console.WriteLine("File not available");
-    //         return;
-    //     }
-        string[] parts = File.ReadAllLines(_filename);
-        foreach (string part in parts)
-        {
-            string[] lines = part.Split("#");
-            if (lines.Length == 1)
-            {
-                _totalScore = int.Parse(lines[0]);
-                
-            }
-            else 
-            {
-                  string goaltype = lines[0];
-                    string name = lines[1];
-                    string description = lines[2];
-                    int points = int.Parse(lines[3]);
-                    bool status = bool.Parse(lines[4]);
-                
-                if (goaltype == "CLG")
-                {
-                  
-                    int current = int.Parse(lines[5]);
-                    int max = int.Parse(lines[6]);
-                    int bonus = int.Parse(lines[7]);
-                    ChecklistGoal newGoal = new ChecklistGoal(name,description,points,status,current, max, bonus);
-                    AddGoals(newGoal);
-                }
-                else if (goaltype == "SG")
-                {
-                    SimpleGoal newGoal = new SimpleGoal(name,description,points,status);
-                    AddGoals(newGoal);
-                }
-                else if (goaltype == "EG")
-                {
-                     int completion = int.Parse(lines[6]);
-                    EternalGoal newGoal = new EternalGoal(name,description,points, status, completion);
-                    AddGoals(newGoal);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid");
-                }
-            }
-        }
 
-    }
-    public void DisplayGoals()
+    public void RecordGoalEvent()
     {
-        Console.WriteLine("The Goals are: ");
-        int index = 1;
-        foreach (var goal in _goals)
+        ListGoals();
+        Console.Write("Which goal did you accomplish? ");
+        if (int.TryParse(Console.ReadLine(), out int choice) &&
+            choice > 0 && choice <= _goals.Count)
         {
-            Console.WriteLine($"{index}. {goal.ToString()}");
-            index++;
+            _goals[choice - 1].RecordEvent(ref _totalPoints);
         }
-
+        else
+        {
+            Console.WriteLine("WRONG");
+        }
     }
+
     public void DisplayScore()
     {
-        Console.WriteLine($" You have {_totalScore} points.");
+        Console.WriteLine($"You have {_totalPoints} points.");
     }
-    // private void GetFileName()// fix this and where do iput this
+
+    public void SaveGoals(string filename)
+    {
+        using StreamWriter writer = new StreamWriter(filename);
+        writer.WriteLine(_totalPoints);
+        foreach (var goal in _goals)
+        {
+            writer.WriteLine(goal.ToRecord());
+        }
+        Console.WriteLine("Goals saved.");
+    }
+
+    public void LoadGoals(string filename)
+    {
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(filename);
+        _goals.Clear();
+        _totalPoints = int.Parse(lines[0]);
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] parts = lines[i].Split("|");
+            string type = parts[0];
+
+            switch (type)
+            {
+                case "SimpleGoal":
+                    bool simpleStatus = bool.Parse(parts[4]);
+                    _goals.Add(new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), simpleStatus));
+                    break;
+
+                case "EternalGoal":
+                    bool eternalStatus = bool.Parse(parts[4]);
+                    _goals.Add(new EternalGoal(parts[1], parts[2], int.Parse(parts[3]), eternalStatus));
+                    break;
+
+                case "ChecklistGoal":
+                    int targetCount = int.Parse(parts[4]);
+                    int bonus = int.Parse(parts[5]);
+                    int currentCount = int.Parse(parts[6]);
+                    bool checklistStatus = bool.Parse(parts[7]); // Add this if your ChecklistGoal includes a status
+                    ChecklistGoal cg = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), targetCount, bonus, checklistStatus);
+                    typeof(ChecklistGoal).GetField("_currentCount", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(cg, currentCount);
+                    _goals.Add(cg);
+                    break;
+            }
+        }
+    
+    }
+}
+
+
+// public void GetFileName()
     // {
-    //     Console.WriteLine("What file do you want to save it to? ");
+    //     Console.Write("Enter filename: ");
     //     _filename = Console.ReadLine();
     // }
-    public void CompleteGoal(int index)
-    {
-       Console.WriteLine(_goals[index -1].RecordEvent());
-    }
-    
-}
+

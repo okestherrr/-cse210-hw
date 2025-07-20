@@ -1,34 +1,37 @@
 using System;
 public class EternalGoal : BaseGoal
 {
-    private int _numberOfCompletion;
-
-        public EternalGoal(string name, string description, int point, bool status, int completion) : base(name, description, point, status, "Eternal")
+    public EternalGoal(string name, string description, int points, bool status)
+    : base(name, description, points, status, "Eternal")
     {
-        
-        _numberOfCompletion = completion;// is this correct?
     }
 
-    public override void PopulateGoal()//loadgoal
+    public override void PopulateGoal()
     {
-    }
-    public override string GetGoalType()
-    {
-        return "";
+        Console.Write("Enter goal name: ");
+        _name = Console.ReadLine();
+        Console.Write("Enter description: ");
+        _description = Console.ReadLine();
+        Console.Write("Enter point value: ");
+        _points = int.Parse(Console.ReadLine());
     }
 
-    public override string ToString()
+    public override string GetDetails()
     {
-        return $"[∞] {_name} ({_description}) —- Currently completed: {_numberOfCompletion}";
+        return $"[∞] {_name} ({_description})";
     }
-    public override string StringForGoalFile()
+    public override string ToRecord()
     {
-        return $"EG#{_name}#{_description}#{_points}#{_status}#{_numberOfCompletion}#";
+        return $"{GetGoalType()}|{_name}|{_description}|{_points}";
     }
-      public override int RecordEvent()
+    public override void RecordEvent(ref int totalPoints)
     {
-      _numberOfCompletion++;
-        return _points;
+        totalPoints += _points;
+        Console.WriteLine($"Great job! You earned {_points} points!");
     }
+    public override bool IsComplete()
+    {
+        return false;
+    } 
 
 }

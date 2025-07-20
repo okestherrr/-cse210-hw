@@ -9,6 +9,6 @@ public class Expense : Transaction
 
     public override string GetInfo()
     {
-        return $"{_date.ToShortDateString()} | EXPENSE | -${_amount} | {_description} [{_category}]";
+        return $"{_date.ToShortDateString()} | Expense Amount | -${_amount} | {_description} [{_category}]";
     }
 }

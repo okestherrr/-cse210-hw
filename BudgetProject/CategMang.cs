@@ -14,7 +14,7 @@ public class CategoryManager
 
     public void DisplayCategories()
     {
-        Console.WriteLine("Available Categories:");
+        Console.WriteLine("Categories to pick from:");
         foreach (var cat in _categories)
         {
             Console.WriteLine($"- {cat.Name}");

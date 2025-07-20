@@ -7,24 +7,24 @@ class Program
         ReportGenerator reportGenerator = new ReportGenerator();
         bool running = true;
 
-        // Predefined categories
+        
         categoryManager.AddCategory("Food");
         categoryManager.AddCategory("Rent");
         categoryManager.AddCategory("Utilities");
         categoryManager.AddCategory("Salary");
         categoryManager.AddCategory("Other");
 
-        Console.WriteLine("Welcome to Budget Tracker!");
+        Console.WriteLine("Welcome to my Damage Tracker aka budget helper!");
 
         while (running)
         {
             Console.WriteLine("\nMenu:");
-            Console.WriteLine("1. Add Income");
+            Console.WriteLine("1. Add Moneys");
             Console.WriteLine("2. Add Expense");
-            Console.WriteLine("3. View Balance");
-            Console.WriteLine("4. View Transaction History");
-            Console.WriteLine("5. View Spending Report by Category");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("3. View Balance(how much more damage you can do)");
+            Console.WriteLine("4. View History(ultimate damage done)");
+            Console.WriteLine("5. View Spending Report by Category(previous damage)");
+            Console.WriteLine("6. Get out of here");
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
 
@@ -49,29 +49,29 @@ class Program
                     running = false;
                     break;
                 default:
-                    Console.WriteLine("Invalid option. Try again.");
+                    Console.WriteLine("Bruh.. Try again.");
                     break;
             }
         }
 
-        Console.WriteLine("Goodbye!");
+        Console.WriteLine("adios amigo");
     }
 
     static void AddTransaction(BudgetManager manager, CategoryManager categoryManager, bool isIncome)
     {
-        Console.Write("Enter amount: ");
+        Console.Write("Gimme an amount: ");
         decimal amount = decimal.Parse(Console.ReadLine());
 
-        Console.Write("Enter description: ");
+        Console.Write("Gimme a description: ");
         string description = Console.ReadLine();
 
         categoryManager.DisplayCategories();
-        Console.Write("Enter category: ");
+        Console.Write("how bout gimme a category: ");
         string category = Console.ReadLine();
 
         if (!categoryManager.IsValidCategory(category))
         {
-            Console.WriteLine("Invalid category. Try again.");
+            Console.WriteLine("Invalid category. wtheck, lets do this again bro.");
             return;
         }
 
@@ -81,6 +81,6 @@ class Program
 
         manager.AddTransaction(transaction);
 
-        Console.WriteLine($"{(isIncome ? "Income" : "Expense")} added successfully.");
+        Console.WriteLine($"{(isIncome ? "Income" : "Expense")} heck yeah! its been added!");
     }
 }

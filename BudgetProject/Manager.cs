@@ -26,7 +26,7 @@ public class BudgetManager
 
     public void PrintHistory()
     {
-        Console.WriteLine("\nTransaction History:");
+        Console.WriteLine("\nDamage(transaction) History:");
         foreach (var t in _transactions)
         {
             Console.WriteLine(t.GetInfo());

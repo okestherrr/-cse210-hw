@@ -2,85 +2,121 @@ class Program
 {
     static void Main(string[] args)
     {
-        BudgetManager budgetManager = new BudgetManager();
-        CategoryManager categoryManager = new CategoryManager();
-        ReportGenerator reportGenerator = new ReportGenerator();
-        bool running = true;
+          Budget budget = new Budget();
+        SortCategory categories = new SortCategory();
 
-        
-        categoryManager.AddCategory("Food");
-        categoryManager.AddCategory("Rent");
-        categoryManager.AddCategory("Utilities");
-        categoryManager.AddCategory("Salary");
-        categoryManager.AddCategory("Other");
+       categories.AddCategory("Food");
+        categories.AddCategory("Rent");
+        categories.AddCategory("Utilities");
+        categories.AddCategory("Entertainment");
+        categories.AddCategory("Other");
 
         Console.WriteLine("Welcome to my Damage Tracker aka budget helper!");
-
+        bool running = true;
         while (running)
-        {
-            Console.WriteLine("\nMenu:");
-            Console.WriteLine("1. Add Moneys");
-            Console.WriteLine("2. Add Expense");
-            Console.WriteLine("3. View Balance(how much more damage you can do)");
-            Console.WriteLine("4. View History(ultimate damage done)");
-            Console.WriteLine("5. View Spending Report by Category(previous damage)");
-            Console.WriteLine("6. Get out of here");
-            Console.Write("Choose an option: ");
+        { Console.WriteLine("\nPick from the Menu:");
+            Console.WriteLine("1 - Add Moneys");
+            Console.WriteLine("2 - Add Expense");
+            Console.WriteLine("3 - Show Balance");
+            Console.WriteLine("4 - Show Damage Report");
+            Console.WriteLine("5 - Exit");
+            Console.Write("Choose one please: ");
             string choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
-                    AddTransaction(budgetManager, categoryManager, isIncome: true);
+                    AddIncome(budget);
                     break;
                 case "2":
-                    AddTransaction(budgetManager, categoryManager, isIncome: false);
+                    AddExpense(budget, categories);
                     break;
                 case "3":
-                    Console.WriteLine($"Current Balance: ${budgetManager.GetBalance()}");
+                    Console.WriteLine($"Balance: ${budget.Balance}");
                     break;
                 case "4":
-                    budgetManager.PrintHistory();
+                    var report = new ReportGenerator(budget.Damages);
+                    report.GenerateSpendingByCategory();
                     break;
                 case "5":
-                    reportGenerator.GenerateSpendingByCategory(budgetManager.GetTransactions());
-                    break;
-                case "6":
                     running = false;
                     break;
                 default:
-                    Console.WriteLine("Bruh.. Try again.");
+                    Console.WriteLine("Invalid option.");
                     break;
             }
         }
 
-        Console.WriteLine("adios amigo");
+        Console.WriteLine("Adios Amigo");
     }
 
-    static void AddTransaction(BudgetManager manager, CategoryManager categoryManager, bool isIncome)
+    private static void AddIncome(Budget budget)
     {
         Console.Write("Gimme an amount: ");
-        decimal amount = decimal.Parse(Console.ReadLine());
-
-        Console.Write("Gimme a description: ");
-        string description = Console.ReadLine();
-
-        categoryManager.DisplayCategories();
-        Console.Write("how bout gimme a category: ");
-        string category = Console.ReadLine();
-
-        if (!categoryManager.IsValidCategory(category))
+         if (!decimal.TryParse(Console.ReadLine(), out decimal amount))
         {
-            Console.WriteLine("Invalid category. wtheck, lets do this again bro.");
+            Console.WriteLine("Fake news, gimme an actual amount.");
             return;
         }
 
-        Transaction transaction = isIncome
-            ? new Income(amount, description, category)
-            : new Expense(amount, description, category);
+        Console.Write("Gimme a Description: ");
+        string description = Console.ReadLine();
 
-        manager.AddTransaction(transaction);
+         ShowSpinner();
 
-        Console.WriteLine($"{(isIncome ? "Income" : "Expense")} heck yeah! its been added!");
+        budget.AddDamage(new Income(amount, DateTime.Now, description));
+        Console.WriteLine("Income has been added.");
+    }
+
+    private static void AddExpense(Budget budget, SortCategory categories)
+    {
+        Console.Write("Gimme an amount: ");
+        if (!decimal.TryParse(Console.ReadLine(), out decimal amount))
+        {
+            Console.WriteLine("Invalid amount.");
+            return;
+        }
+
+        Console.Write("gimme a description: ");
+        string description = Console.ReadLine();
+
+        categories.ShowCategories();
+        Console.Write("gimme a category for that: ");
+        string category = Console.ReadLine();
+
+        Console.Clear();
+
+        if (!categories.IsValid(category))
+        {
+            Console.WriteLine("bruh that category isnt available.");
+            return;
+        }
+
+        ShowSpinner();
+
+        budget.AddDamage(new Expense(amount, DateTime.Now, description, category));
+        Console.WriteLine("Expense added!");
+    }
+
+    private static void ShowSpinner()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Console.Write("/");
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+
+            Console.Write("|");
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+
+            Console.Write("-");
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+
+            Console.Write("\\");
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+        }
     }
 }

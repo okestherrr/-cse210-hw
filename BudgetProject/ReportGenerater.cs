@@ -1,16 +1,31 @@
 public class ReportGenerator
 {
-    public void GenerateSpendingByCategory(List<Transaction> transactions)
-    {
-        var grouped = transactions
-            .Where(t => t is Expense)
-            .GroupBy(t => t.Category)
-            .Select(g => new { Category = g.Key, Total = g.Sum(t => t.Amount) });
+    private List<Damage> _damages;
 
-        Console.WriteLine("\nExpense Report by Category:");
-        foreach (var item in grouped)
+    public ReportGenerator(List<Damage> damages)
+    {
+        _damages = damages;
+    }
+
+    public void GenerateSpendingByCategory()
+    {
+        Dictionary<string, decimal> totals = new Dictionary<string, decimal>();
+
+        foreach (var d in _damages)
         {
-            Console.WriteLine($"{item.Category}: ${item.Total}");
+            if (d is Expense exp)
+            {
+                if (totals.ContainsKey(exp.Category))
+                    totals[exp.Category] += exp.Amount;
+                else
+                    totals[exp.Category] = exp.Amount;
+            }
+        }
+
+        Console.WriteLine("\nDamage Report by Category:");
+        foreach (var entry in totals)
+        {
+            Console.WriteLine($"{entry.Key}: ${entry.Value}");
         }
     }
 }

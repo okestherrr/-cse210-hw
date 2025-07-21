@@ -117,6 +117,7 @@ class Program
             Console.Write("\\");
             Thread.Sleep(250);
             Console.Write("\b \b");
+            Console.WriteLine();
         }
     }
 }

@@ -81,11 +81,10 @@ public class AllGoals
                     int targetCount = int.Parse(parts[4]);
                     int bonus = int.Parse(parts[5]);
                     int currentCount = int.Parse(parts[6]);
-                    bool checklistStatus = bool.Parse(parts[7]); // Add this if your ChecklistGoal includes a status
-                    ChecklistGoal cg = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), targetCount, bonus, checklistStatus);
-                    typeof(ChecklistGoal).GetField("_currentCount", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(cg, currentCount);
-                    _goals.Add(cg);
+                    bool checklistStatus = bool.Parse(parts[7]);
+                    _goals.Add(new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), targetCount, bonus, checklistStatus, currentCount));
                     break;
+
             }
         }
     

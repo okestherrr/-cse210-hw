@@ -7,13 +7,11 @@ public class ChecklistGoal : BaseGoal
     private int _currentCount;
 
     public ChecklistGoal(string name, string description, int points, int targetCount, int bonus, bool status, int currentCount = 0)
-        : base(name, description, points, "Checklist", status)
-    {
-        _targetCount = targetCount;
-        _bonus = bonus;
-        _currentCount = currentCount;
-    }
-
+    : base(name, description, points, status, "Checklist")
+{
+    _targetCount = targetCount;
+    _bonus = bonus;
+    _currentCount = currentCount;
 }
     public override void PopulateGoal()
     {
